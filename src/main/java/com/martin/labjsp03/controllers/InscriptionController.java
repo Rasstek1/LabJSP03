@@ -35,7 +35,7 @@ public class InscriptionController {
     public String afficher(Model model, HttpSession session) {
         Panier panier = getPanier(session);
         model.addAttribute("panier", panier);
-        return "AfficherPanier"; // Nom de la vue JSP
+        return "afficherPanier"; // Nom de la vue JSP
     }
 
     // c. La méthode "supprimer"
@@ -51,7 +51,7 @@ public class InscriptionController {
     public String valider(Model model) {
         List<Etudiant> listeEtudiants = dataContext.getListeEtudiants();
         model.addAttribute("listeEtudiants", listeEtudiants);
-        return "ValiderEtudiant"; // Nom de la vue JSP
+        return "validerEtudiant"; // Nom de la vue JSP
     }
 
     // e. La méthode "confirmer"

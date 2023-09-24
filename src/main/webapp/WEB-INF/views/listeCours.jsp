@@ -11,25 +11,26 @@
 <body>
 <div class="container mt-5">
     <h1 class="text-center">Liste des Cours</h1>
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover" style="border: 3px solid darkslategrey">
         <thead class="thead-dark">
         <tr>
             <th>Numéro</th>
             <th>Intitulé</th>
             <th>Nombre de Crédits</th>
             <th>Session</th>
-            <th>Fichier de Plan</th>
+            <th>Details</th>
             <th>Choisir</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach var="cours" items="${listeCours}">
-            <tr>
+            <tr class="bg-info">
                 <td>${cours.numero}</td>
                 <td>${cours.intitule}</td>
                 <td>${cours.nbCredits}</td>
                 <td>${cours.session}</td>
-                <td><a href="${pageContext.request.contextPath}/numCours" target="_blank" class="btn btn-info">Voir le Plan</a></td>
+                <td><button type="button" class="btn btn-warning"href="#" onclick="downloadFile()">Voir le Plan</button></td>
+
                 <!-- Bouton Bootstrap -->
                 <td><button type="button" class="btn btn-success">Choisir</button></td>
             </tr>
@@ -39,9 +40,26 @@
 
     <!-- Boutons Bootstrap -->
     <a href="${pageContext.request.contextPath}/choix" class="btn btn-primary">Voir mes choix</a>
-    <a href="${pageContext.request.contextPath}/" class="btn btn-secondary">Retour à l'accueil</a>
+    <a class="btn btn-secondary" href="/LabJSP03/accueil">Retour à l'accueil</a>
 </div>
 
+<script>
+    function downloadFile() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '${pageContext.request.contextPath}/numCours', true);
+        xhr.responseType = 'blob';
+        xhr.onload = function() {
+            var blob = xhr.response;
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'NumCours.docx';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+        xhr.send();
+    }
+</script>
 
 </body>
 </html>

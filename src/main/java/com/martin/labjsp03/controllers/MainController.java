@@ -4,6 +4,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller
 public class MainController {
@@ -47,10 +51,17 @@ public class MainController {
         }
     }
 
-    @RequestMapping("/numCours")
-    public String showNumCours(Model model) {
-        // Logique pour envoyer des données au fichier numCours.jsp si nécessaire
-        return "numCours"; // retourne la vue numCours.jsp
-    }
+
+
+
+        @RequestMapping("/numCours")
+        public ResponseEntity<Resource> getFile() throws IOException {
+            Resource resource = new ClassPathResource("static/files/NumCours.docx");
+
+            return ResponseEntity.ok()
+                    .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+                    .body(resource);
+        }
 
 }

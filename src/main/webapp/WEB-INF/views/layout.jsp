@@ -48,11 +48,22 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"href="${pageContext.request.contextPath}/cours/liste">Liste des Cours</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/cours/liste">Liste des Cours</a>
                     </li>
+
+                    <li class="nav-item">
+                    <li> <a class="nav-link" href="${pageContext.request.contextPath}/inscription/afficher">Panier</a></li>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/inscription/valider">Valider Etudiant</a>
+                    </li>
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="/LabJSP03/Accueil/contact">Nous contacter</a>
                     </li>
+
                 </ul>
             </div>
         </div>

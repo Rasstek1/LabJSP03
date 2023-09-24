@@ -1,0 +1,47 @@
+body {
+
+    background-size: cover; /* Pour s'assurer que l'image couvre toute la page */
+    background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    background-attachment: fixed; /* Pour que l'arrière-plan reste fixe lors du défilement */
+    padding-bottom: 80px;
+
+}
+
+header {
+    background-color: #87a6a9;
+    border: none;
+    box-shadow: none;
+}
+
+.navbar {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+
+}
+
+.nav-link{
+    color:white;
+}
+
+.logo-img {
+    max-width: 100px; /* Vous pouvez ajuster la taille du logo ici */
+    max-height: 100px; /* Vous pouvez ajuster la hauteur maximale ici */
+}
+
+footer {
+    background-color: rgba(135, 166, 169, 0.5); /* La couleur de fond avec une transparence de 0.5 */
+    color: #fff;
+    padding: 20px;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px; /* Ajustez la hauteur comme désiré */
+    flex-direction: column; /* Aligner les éléments en colonne */
+    margin-top:50px;
+}

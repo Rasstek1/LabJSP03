@@ -14,7 +14,7 @@
 <table border="1">
     <thead>
     <tr>
-        <th>ID Étudiant</th>
+        <th>NAS Étudiant</th>
         <th>Nom</th>
         <th>Prénom</th>
         <th>Action</th>
@@ -24,7 +24,7 @@
     <!-- Utilisation de JSTL pour itérer sur la liste des étudiants -->
     <c:forEach var="etudiant" items="${listeEtudiants}">
         <tr>
-            <td>${etudiant.id}</td>
+            <td>${etudiant.nas}</td>
             <td>${etudiant.nom}</td>
             <td>${etudiant.prenom}</td>
             <td>

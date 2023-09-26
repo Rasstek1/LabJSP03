@@ -1,7 +1,6 @@
 package com.martin.labjsp03.controllers;
 
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 
 import org.springframework.http.HttpHeaders;
@@ -11,14 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
-
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @Controller
-public class MainController {
+public class HomeController {
 
     @RequestMapping(value = "/accueil", method = RequestMethod.GET)
     public String accueil(Model model) {

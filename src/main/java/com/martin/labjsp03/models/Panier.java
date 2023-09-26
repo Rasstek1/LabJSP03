@@ -20,8 +20,15 @@ public class Panier {
 
     // c) La méthode nommée "ajouterCours"
     public void ajouterCours(Cours cours) {
-        liste.add(cours);
+        if (!contains(cours)) {
+            liste.add(cours);
+        }
     }
+    public boolean contains(Cours cours) {
+        return liste.contains(cours);
+    }
+
+
 
     // d) La méthode nommée "supprimerCours"
     public void supprimerCours(int numero) {

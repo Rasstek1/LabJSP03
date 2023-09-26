@@ -1,5 +1,7 @@
 package com.martin.labjsp03.models;
 
+import java.util.Objects;
+
 public class Cours {
 
     private int numero;
@@ -32,6 +34,18 @@ public class Cours {
                 ", session='" + session + '\'' +
                 ", planFichier='" + planFichier + '\'' +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cours cours = (Cours) o;
+        return numero == cours.numero;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numero);
     }
 
     public int getNumero() {

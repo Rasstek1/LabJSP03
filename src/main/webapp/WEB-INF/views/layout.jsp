@@ -6,19 +6,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Mon site</title>
-    <!-- Inclure Bootstrap CSS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/gestionPanier.js"></script>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+
     <script src="${pageContext.request.contextPath}/js/script.js"></script>
 
-    <style>
-        /* Ajouter un effet de flou à une boîte */
-        .boite-blurry {
-            backdrop-filter: blur(10px); /* Ajustez la valeur selon l'effet désiré */
-            /*background-color: rgba(255, 255, 255, 0.5); /* Ajustez les valeurs RGBA pour obtenir l'effet désiré */
-        }
-    </style>
+
 </head>
 <body>
 
@@ -29,7 +25,7 @@
             <a class="navbar-brand" href="/LabJSP03/accueil">
                 <img src="${pageContext.request.contextPath}/img/Logo.png" alt="Logo" class="logo-img"/>
             </a>
-            <h2>Collège <span style="color: #fcc33d;">Informatique</span></h2>
+            <h2>Collège <span style="color: #fcc33d;">InformatiX</span></h2>
 
 
             <!-- Bouton hamburger -->

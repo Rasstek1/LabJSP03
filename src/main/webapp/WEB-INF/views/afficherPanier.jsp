@@ -17,6 +17,14 @@
         <th>Session</th>
         <th>Action</th>
     </tr>
+    <c:choose>
+        <c:when test="${empty panier.liste}">
+            <p>Votre panier est vide.</p>
+        </c:when>
+        <c:otherwise>
+            <%-- Code pour afficher les éléments du panier ici. --%>
+        </c:otherwise>
+    </c:choose>
     </thead>
     <tbody>
     <c:forEach var="cours" items="${panier.liste}">

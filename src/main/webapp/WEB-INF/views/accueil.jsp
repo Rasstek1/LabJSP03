@@ -11,7 +11,7 @@
 <div class="row">
     <!-- Texte de bienvenue -->
     <div class="col-12">
-        <h2>À propos de la formation</h2>
+        <h2>À propos des formations</h2>
         <p>
             Notre formation en informatique est conçue pour vous fournir toutes les compétences nécessaires
             pour réussir dans le domaine en constante évolution de la technologie de l'information.

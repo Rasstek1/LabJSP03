@@ -83,7 +83,7 @@ public class InscriptionController {
 
 
     // e. La méthode "confirmer"
-    @RequestMapping("/confirmer/{nas}")
+    @RequestMapping("/confirmer/{nas}")//
     public String confirmer(@PathVariable("nas") String nas, HttpSession session, Model model) {
         Panier panier = getPanier(session);
         Etudiant etudiant = dataContext.getEtudiant(nas);

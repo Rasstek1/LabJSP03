@@ -5,36 +5,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Confirmation d'Inscription</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        h1, h2 {
-            color: #333366;
-        }
-        p {
-            font-size: 18px;
-        }
-        .cours-list {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-    </style>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-<h1>Félicitations !</h1>
+<div class="container mt-5">
 
-<p>Votre inscription a été confirmée avec succès.</p>
+    <h1 class="text-center">Félicitations !</h1>
 
-<h2>Informations de l'étudiant</h2>
-<p>NAS: <strong>${inscription.nas}</strong></p>
-<p>Date d'inscription: <strong>${inscription.dateInscription}</strong></p>
+    <h2>Informations de l'étudiant</h2>
+    <table class="table table-striped table-hover" style="border: 3px solid darkslategrey">
+        <thead class="thead-dark">
+        <tr>
+            <th>NAS</th>
+            <th>Date d'inscription</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="bg-info">
+            <td>${inscription.nas}</td>
+            <td>${inscription.dateInscription}</td>
+        </tr>
+        </tbody>
+    </table>
 
-<h2>Cours choisis :</h2>
-<pre class="cours-list">${inscription.listeCours}</pre>
+    <h2>Cours choisis :</h2>
+    <table class="table table-striped table-hover" style="border: 3px solid darkslategrey">
+        <thead class="thead-dark">
+        <tr>
+            <th>Numéro</th>
+            <th>Intitulé</th>
+            <th>Nombre de Crédits</th>
+            <th>Session</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="cours" items="${inscription.listeCours}">
+            <tr class="bg-info">
+                <td>${cours.numero}</td>
+                <td>${cours.intitule}</td>
+                <td>${cours.nbCredits}</td>
+                <td>${cours.session}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 
-<a href="${pageContext.request.contextPath}/">Retour à l'accueil</a>
+    <div class="d-flex">
+        <a href="${pageContext.request.contextPath}/" class="btn btn-secondary">Retour à l'accueil</a>
+    </div>
+
+</div>
 
 </body>
 </html>

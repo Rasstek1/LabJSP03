@@ -88,13 +88,23 @@ public class InscriptionController {
         Panier panier = getPanier(session);
         Etudiant etudiant = dataContext.getEtudiant(nas);
         if (etudiant != null && panier != null) {
-            Inscription nouvelleInscription = new Inscription(nas, new Date(), panier.getListe().toString());
-            dataContext.inscrire(nouvelleInscription);
-            model.addAttribute("inscription", nouvelleInscription);
+            // Récupérer la liste des cours du panier ou de toute autre source
+            List<Cours> listCoursSession = panier.getListe(); // Cette méthode dépend de la structure de votre classe Panier
+
+            // Créer une nouvelle inscription
+            Inscription inscription = new Inscription(nas, new Date(), listCoursSession);
+
+            // Ajouter l'inscription dans le contexte de données
+            dataContext.inscrire(inscription);
+
+            // Ajouter l'inscription au modèle pour la vue
+            model.addAttribute("inscription", inscription);
+
             model.addAttribute("pageContent", "confirmationInscription"); // Corrigé ici
             return "layout"; // Retourne le layout comme vue principale
         }
         return "Erreur"; // Nom d'une vue JSP pour afficher les erreurs
     }
+
 
 }

@@ -13,7 +13,7 @@
 
 <body>
 <div class="container mt-5">
-    <!-- Nombre de cours choisisl -->
+    <!-- Nombre de cours choisis -->
     <div>
         Nombre de cours choisis: ${panier.getListe().size()}
     </div>

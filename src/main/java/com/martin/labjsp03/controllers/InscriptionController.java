@@ -69,7 +69,7 @@ public class InscriptionController {
     public String supprimer(@PathVariable("numero") int numero, HttpSession session) {
         Panier panier = getPanier(session);
         panier.supprimerCours(numero);
-        return "redirect:/inscription/afficher";//
+        return "redirect:/inscription/afficher";//asd
     }
 
     // d. La méthode "valider"

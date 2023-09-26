@@ -1,16 +1,13 @@
-<!-- accueil.jsp -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<div class="row">
-
+<div class="container">
     <!-- Bannière -->
     <div class="banner">
-        <img src="${pageContext.request.contextPath}/img/banner.jpg" alt="Bannière" />
+        <img class="img-banner" src="${pageContext.request.contextPath}/img/banner.jpg" alt="Bannière" />
     </div>
 
-<div class="row">
     <!-- Texte de bienvenue -->
-    <div class="col-12">
+    <div class="text-content">
         <h2>À propos des formations</h2>
         <p>
             Notre formation en informatique est conçue pour vous fournir toutes les compétences nécessaires

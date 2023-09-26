@@ -9,11 +9,15 @@
 
     <script src="/gestionPanier.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
 </head>
 
 <body>
 <div class="container mt-5">
+    <!-- Nombre de cours choisis -->
+    <div>
+        Nombre de cours choisis: ${panier.getListe().size()}
+    </div>
+
     <h1 class="text-center">Liste des Cours</h1>
     <table class="table table-striped table-hover" style="border: 3px solid darkslategrey">
         <thead class="thead-dark">
@@ -37,18 +41,24 @@
 
                 <td>
                     <form action="${pageContext.request.contextPath}/ajouter/${cours.numero}" method="post">
-                        <button type="submit" class="btn btn-success">Choisir</button>
+                        <button type="submit" class="btn btn-success"
+                                <c:if test="${coursDansLePanier.contains(cours)}">disabled</c:if>
+
+                        >
+                            Choisir
+                        </button>
                     </form>
                 </td>
-
             </tr>
         </c:forEach>
         </tbody>
     </table>
 
-    <!-- Boutons Bootstrap -->
-    <a href="${pageContext.request.contextPath}/choix" class="btn btn-primary">Voir mes choix</a>
-    <a class="btn btn-secondary" href="/LabJSP03/accueil">Retour à l'accueil</a>
+    <div class="d-flex">
+        <a href="${pageContext.request.contextPath}/choix" class="btn btn-primary me-2">Voir mes choix</a>
+        <a class="btn btn-secondary" href="/LabJSP03/accueil">Retour à l'accueil</a>
+    </div>
+
 </div>
 
 <script>

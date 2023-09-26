@@ -40,13 +40,11 @@
                 <td><button type="button" class="btn btn-warning"href="#" onclick="downloadFile()">Voir le Plan</button></td>
 
                 <td>
-                    <form action="${pageContext.request.contextPath}/ajouter/${cours.numero}" method="post">
+                    <form action="${pageContext.request.contextPath}/cours/ajouter/${cours.numero}" method="post">
                         <button type="submit" class="btn btn-success"
-                                <c:if test="${coursDansLePanier.contains(cours)}">disabled</c:if>
+                                <c:if test="${panier.getListe().contains(cours)}">disabled="disabled"</c:if>
+                        >Choisir</button>
 
-                        >
-                            Choisir
-                        </button>
                     </form>
                 </td>
             </tr>

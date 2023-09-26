@@ -76,10 +76,11 @@ public class InscriptionController {
     @RequestMapping("/valider")
     public String valider(Model model) {
         List<Etudiant> listeEtudiants = dataContext.getListeEtudiants();
-        model.addAttribute("listeEtudiant", listeEtudiants);
+        model.addAttribute("listeEtudiants", listeEtudiants); // Corrigé ici
         model.addAttribute("pageContent", "validerEtudiant"); // attribut pour le layout
         return "layout"; // Retourne le layout comme vue principale
     }
+
 
     // e. La méthode "confirmer"
     @RequestMapping("/confirmer/{nas}")
@@ -90,9 +91,10 @@ public class InscriptionController {
             Inscription nouvelleInscription = new Inscription(nas, new Date(), panier.getListe().toString());
             dataContext.inscrire(nouvelleInscription);
             model.addAttribute("inscription", nouvelleInscription);
-            model.addAttribute("pageContent", ""); // attribut pour le layout
+            model.addAttribute("pageContent", "confirmationInscription"); // Corrigé ici
             return "layout"; // Retourne le layout comme vue principale
         }
         return "Erreur"; // Nom d'une vue JSP pour afficher les erreurs
     }
+
 }

@@ -30,6 +30,7 @@
             <td>
                 <!-- Lien pour confirmer l'étudiant par son NAS (Numéro d'Assurance Sociale ou autre identifiant) -->
                 <a href="<c:url value='/inscription/confirmer/${etudiant.nas}'/>">Confirmer</a>
+
             </td>
         </tr>
     </c:forEach>

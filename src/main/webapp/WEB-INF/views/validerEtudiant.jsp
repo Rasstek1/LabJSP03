@@ -47,7 +47,7 @@
 
     <div class="d-flex">
         <!-- Ajouter les autres boutons ou liens de navigation ici -->
-        <a href="${pageContext.request.contextPath}/accueil" class="btn btn-secondary">Retour à l'accueil</a>
+        <a href="${pageContext.request.contextPath}/cours/liste" class="btn btn-secondary">Retour à la liste</a>
     </div>
 
 </div>

@@ -16,7 +16,7 @@
         <div class="alert alert-danger">${errorMessage}</div>
     </c:if>
 
-    <h6>Nombre de cours sélectionnés: ${panier.liste.size()}</h6>
+    <h6>Nombre de cours sélectionnés: <span style="background-color: mediumseagreen; color: white; padding: 10px;" > ${panier.liste.size()}</span></h6>
 
     <h1 class="text-center">Cours sélectionnés</h1>
     <div style="overflow-x:auto;">

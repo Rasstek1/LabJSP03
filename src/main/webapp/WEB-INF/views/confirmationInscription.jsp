@@ -14,9 +14,9 @@
 
 <div class="container mt-5">
 
-    <h1 class="text-center">Félicitations !</h1>
+    <h1 class="text-center" style="color: #fcc33d">Félicitations !</h1>
 
-    <h2>Informations de l'étudiant</h2>
+    <h2 style="color: black">Informations de l'étudiant</h2>
     <table class="table table-striped table-hover w-50" style="border: 3px solid darkslategrey; background-color: white">
         <thead class="thead-dark">
         <tr>
@@ -36,7 +36,7 @@
         </tbody>
     </table>
 
-    <h2 class="mt-5">Cours choisis</h2>
+    <h2 class="mt-5" style="color: black">Cours choisis</h2>
     <table class="table table-striped table-hover w-50" style="border: 3px solid darkslategrey; background-color: white">
         <thead class="thead-dark">
         <tr>

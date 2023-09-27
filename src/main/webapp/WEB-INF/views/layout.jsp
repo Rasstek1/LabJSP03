@@ -6,8 +6,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Mon site</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="/gestionPanier.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -57,11 +61,6 @@
                         <a class="nav-link" href="${pageContext.request.contextPath}/inscription/valider">Valider Etudiant</a>
                     </li>
 
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/LabJSP03/Accueil/contact">Nous contacter</a>
-                    </li>
-
                 </ul>
             </div>
         </div>
@@ -81,7 +80,7 @@
 
 <!-- Pied de page -->
 <footer class="text-center ">
-    <p>© 2023 CollegeInformatique.com</p>
+    <p>© 2023 CollegeInformatiX.com</p>
 </footer>
 
 <!-- Inclure Bootstrap JS et Popper.js -->

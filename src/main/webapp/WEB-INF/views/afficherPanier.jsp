@@ -5,41 +5,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Afficher Panier</title>
+
 </head>
 <body>
-<h1>Contenu du Panier</h1>
-<table border="1">
-    <thead>
-    <tr>
-        <th>Numéro</th>
-        <th>Intitulé</th>
-        <th>Nombre de Crédits</th>
-        <th>Session</th>
-        <th>Action</th>
-    </tr>
-    <c:choose>
-        <c:when test="${empty panier.liste}">
-            <p>Votre panier est vide.</p>
-        </c:when>
-        <c:otherwise>
-            <%-- Code pour afficher les éléments du panier ici. --%>
-        </c:otherwise>
-    </c:choose>
-    </thead>
-    <tbody>
-    <c:forEach var="cours" items="${panier.liste}">
-        <tr>
-            <td>${cours.numero}</td>
-            <td>${cours.intitule}</td>
-            <td>${cours.nbCredits}</td>
-            <td>${cours.session}</td>
-            <td>
-                <a href="${pageContext.request.contextPath}/inscription/supprimer/${cours.numero}">Supprimer</a>
-            </td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
-<a href="${pageContext.request.contextPath}/inscription/valider">Valider mes choix</a>
+<div class="container mt-5">
+
+    <c:if test="${not empty errorMessage}">
+        <div class="alert alert-danger">${errorMessage}</div>
+    </c:if>
+
+    <div>Nombre de cours sélectionnés: ${panier.liste.size()}</div>
+
+    <h1 class="text-center">Cours sélectionnés</h1>
+    <div style="overflow-x:auto;">
+        <table class="table table-striped table-hover" style="border: 3px solid darkslategrey">
+            <thead class="thead-dark">
+            <tr>
+                <th>No.</th>
+                <th>Cours</th>
+                <th>Crédits</th>
+                <th>Session</th>
+                <th>Retirer</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:choose>
+                <c:when test="${empty panier.liste}">
+                    <tr>
+                        <td colspan="5">Aucun cours.</td>
+                    </tr>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach var="cours" items="${panier.liste}">
+                        <tr class="bg-info">
+                            <td>${cours.numero}</td>
+                            <td>${cours.intitule}</td>
+                            <td>${cours.nbCredits}</td>
+                            <td>${cours.session}</td>
+                            <td>
+                                <form action="${pageContext.request.contextPath}/inscription/supprimer/${cours.numero}" method="post">
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i></button>
+                                </form>
+                            </td>
+
+                        </tr>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="d-flex">
+        <a href="${pageContext.request.contextPath}/inscription/valider" class="btn btn-primary me-2">Valider mes choix</a>
+        <a href="${pageContext.request.contextPath}/cours/liste" class="btn btn-secondary">Retour à la liste</a>
+    </div>
+</div>
 </body>
 </html>

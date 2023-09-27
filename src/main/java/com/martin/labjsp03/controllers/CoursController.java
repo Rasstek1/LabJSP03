@@ -52,6 +52,16 @@ public class CoursController {
         return "redirect:/cours/liste";   // Assurez-vous que ce chemin redirige vers la page actuelle
     }
 
+    @RequestMapping(value = "/supprimer/{numero}", method = RequestMethod.POST)
+    public String supprimer(@PathVariable("numero") int numero, HttpSession session) {
+
+        Panier panier = getPanier(session);
+        Cours cours = dataContext.getCours(numero);
+        if (cours != null) {
+            panier.supprimerCours(cours);
+        }
+        return "redirect:/cours/liste";  // Remplacez par le chemin correct
+    }
 
 
 }

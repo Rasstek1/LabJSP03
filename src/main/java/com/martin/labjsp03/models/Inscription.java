@@ -1,4 +1,6 @@
 package com.martin.labjsp03.models;
+import jakarta.websocket.Session;
+
 import java.util.Date;
 import java.util.List;
 
@@ -20,14 +22,7 @@ public class Inscription {
         this.listeCours = listeCours;
     }
 
-    @Override
-    public String toString() {
-        return "Inscription{" +
-                "nas='" + nas + '\'' +
-                ", dateInscription='" + dateInscription + '\'' +
-                ", listeCours='" + listeCours + '\'' +
-                '}';
-    }
+
 
     public String getNas() {
         return nas;
@@ -49,9 +44,6 @@ public class Inscription {
         return listeCours;
     }
 
-    public void setListeCours(List<Cours> listeCours) {
-        this.listeCours = listeCours;
-    }
 
 
 }

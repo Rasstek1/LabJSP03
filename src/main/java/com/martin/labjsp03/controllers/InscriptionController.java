@@ -34,26 +34,18 @@ public class InscriptionController {
         }
         return panier;
     }
+    // b. La méthode "listeCours"
     @RequestMapping(value = "/ajouter/{numero}", method = RequestMethod.POST)
     public String ajouter(@PathVariable("numero") int numero, HttpSession session) {
-        System.out.println("Trying to add course with numero: " + numero);
 
         Panier panier = getPanier(session);
-
-        System.out.println("Fetched/created cart: " + panier);
-
         Cours cours = dataContext.getCours(numero);
         if (cours != null) {
-            System.out.println("Course found, adding to cart");
-            panier.ajouterCours(cours);
-        } else {
-            System.out.println("Course not found");
-        }
 
-        System.out.println("Redirecting back to list");
+            panier.ajouterCours(cours);
+        }
         return "redirect: listeCours";  // Remplacez par le chemin correct
     }
-
 
     // b. La méthode "afficher"
     @RequestMapping("/afficher")
@@ -69,17 +61,25 @@ public class InscriptionController {
     public String supprimer(@PathVariable("numero") int numero, HttpSession session) {
         Panier panier = getPanier(session);
         panier.supprimerCours(numero);
-        return "redirect:/inscription/afficher";//asddsf
+        return "redirect:/inscription/afficher";
     }
 
     // d. La méthode "valider"
     @RequestMapping("/valider")
-    public String valider(Model model) {
+    public String valider(HttpSession session, Model model) {
+        Panier panier = getPanier(session); // Obtenez le panier de la session
+        if (panier.getListe().isEmpty()) {
+            model.addAttribute("errorMessage", "Vous devez choisir au moins un cours avant de valider.");
+            model.addAttribute("pageContent", "validerEtudiant"); // attribut pour le layout
+            return "layout"; // Retourne au même layout comme vue principale
+        }
+
         List<Etudiant> listeEtudiants = dataContext.getListeEtudiants();
         model.addAttribute("listeEtudiants", listeEtudiants); // Corrigé ici
         model.addAttribute("pageContent", "validerEtudiant"); // attribut pour le layout
         return "layout"; // Retourne le layout comme vue principale
     }
+
 
 
     // e. La méthode "confirmer"
@@ -99,6 +99,8 @@ public class InscriptionController {
 
             // Ajouter l'inscription au modèle pour la vue
             model.addAttribute("inscription", inscription);
+            model.addAttribute("etudiant", etudiant);
+
 
             model.addAttribute("pageContent", "confirmationInscription"); // Corrigé ici
             return "layout"; // Retourne le layout comme vue principale
@@ -108,3 +110,11 @@ public class InscriptionController {
 
 
 }
+
+
+
+
+
+
+
+

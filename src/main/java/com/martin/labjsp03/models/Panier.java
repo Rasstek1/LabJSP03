@@ -46,4 +46,9 @@ public class Panier {
     public void viderPanier() {
         liste.clear();
     }
+
+    //Methode supprimer pour déselectionné un choix de la liste de cours si il est déjà dans le panier
+    public void supprimerCours(Cours cours) {
+        liste.remove(cours);
+    }
 }

@@ -24,17 +24,6 @@ public class Cours {
     }
 
 
-
-    @Override
-    public String toString() {
-        return "Cours{" +
-                "numero=" + numero +
-                ", intitule='" + intitule + '\'' +
-                ", nbCredits='" + nbCredits + '\'' +
-                ", session='" + session + '\'' +
-                ", planFichier='" + planFichier + '\'' +
-                '}';
-    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

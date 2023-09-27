@@ -31,19 +31,6 @@ public class Etudiant {
         this.genre = genre;
     }
 
-    @Override
-    public String toString() {
-        return "Etudiant{" +
-                "nas='" + nas + '\'' +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", adresse='" + adresse + '\'' +
-                ", codePostal='" + codePostal + '\'' +
-                ", courriel='" + courriel + '\'' +
-                ", genre='" + genre + '\'' +
-                '}';
-    }
 
     public String getNas() {
         return nas;

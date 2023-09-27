@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Confirmation d'Inscription</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -14,28 +13,32 @@
     <h1 class="text-center">Félicitations !</h1>
 
     <h2>Informations de l'étudiant</h2>
-    <table class="table table-striped table-hover" style="border: 3px solid darkslategrey">
+    <table class="table table-striped table-hover w-50" style="border: 3px solid darkslategrey">
         <thead class="thead-dark">
         <tr>
             <th>NAS</th>
+            <th>Nom</th>  <!-- Ajouté -->
+            <th>Prénom</th>  <!-- Ajouté -->
             <th>Date d'inscription</th>
         </tr>
         </thead>
         <tbody>
         <tr class="bg-info">
             <td>${inscription.nas}</td>
+            <td>${etudiant.nom}</td>  <!-- Ajouté -->
+            <td>${etudiant.prenom}</td>  <!-- Ajouté -->
             <td>${inscription.dateInscription}</td>
         </tr>
         </tbody>
     </table>
 
     <h2>Cours choisis :</h2>
-    <table class="table table-striped table-hover" style="border: 3px solid darkslategrey">
+    <table class="table table-striped table-hover w-50" style="border: 3px solid darkslategrey">
         <thead class="thead-dark">
         <tr>
-            <th>Numéro</th>
-            <th>Intitulé</th>
-            <th>Nombre de Crédits</th>
+            <th>No.</th>
+            <th>Cours</th>
+            <th>Crédits</th>
             <th>Session</th>
         </tr>
         </thead>
@@ -52,8 +55,9 @@
     </table>
 
     <div class="d-flex">
-        <a href="${pageContext.request.contextPath}/" class="btn btn-secondary">Retour à l'accueil</a>
+        <a href="/LabJSP03/accueil" class="btn btn-secondary">Retour à l'accueil</a>
     </div>
+
 
 </div>
 

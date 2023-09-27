@@ -12,8 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="${pageContext.request.contextPath}/js/script.js"></script>
+
 
 
 </head>
@@ -49,7 +50,7 @@
                     </li>
 
                     <li class="nav-item">
-                    <li> <a class="nav-link" href="${pageContext.request.contextPath}/inscription/afficher">Panier</a></li>
+                    <li> <a class="nav-link" href="${pageContext.request.contextPath}/inscription/afficher">Cours sélectionnés</a></li>
                     </li>
 
                     <li class="nav-item">

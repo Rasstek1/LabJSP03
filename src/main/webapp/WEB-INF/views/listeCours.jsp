@@ -15,10 +15,10 @@
 </head>
 <body>
 
-<div class="container-fluid mt-3">
+<div class="container mt-3">
     <div class="row">
         <!-- Colonne de gauche pour le tableau -->
-        <div class="col-lg-6 col-md-12">
+        <div class="col-lg-6 col-md-12 align-items-end">
 
                 <div class="container mt-3">
 
@@ -52,7 +52,7 @@
                                     <td>${cours.nbCredits}</td>
                                     <td>${cours.session}</td>
                                     <td>
-                                        <button type="button" class="btn btn-warning" onclick="downloadFile()">
+                                        <button type="button" class="btn btn-warning" onclick="downloadFile()"><!--Fonction javascript pour le telechargement du fichier-->
                                             <i class="fas fa-file-alt"></i>
                                         </button>
                                     </td>
@@ -81,6 +81,8 @@
                         </table>
                     </div>
 
+
+
                     <div class="d-flex">
                         <a href="${pageContext.request.contextPath}/inscription/afficher" class="btn btn-primary me-2">Voir
                             mes
@@ -91,33 +93,33 @@
             </div>
 
 
-        <!-- Colonne de droite pour le contenu supplémentaire -->
+        <!-- Colonne de droite images et texte -->
         <div class="col-lg-6 col-md-12">
-            <div class="container-fluid mt-4" style="padding-top: 20px;">
+            <div class="container-fluid mt-5" style="padding-top: 35px;">
 
-                <div class="d-flex flex-column align-items-start">
-                    <!-- Première image et texte -->
+                <div class="d-flex flex-column align-items-center">
+                    <!-- Premiere image et texte -->
                     <div class="image-container" style="margin-left: 0;">
                         <img src="${pageContext.request.contextPath}/img/Liste_Image.jpg" alt="Image 1" class="img-fluid" style="box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.8);">
                         <h2 class="image-title">Personnalisation du Parcours</h2>
                     </div>
-                    <p class="text-container">Dans notre collège, nous comprenons l'importance de fournir un enseignement en informatique qui s'adapte aux besoins individuels de chaque étudiant.
+                    <p class="text-container" style="background-color: #fcc33d">Dans notre collège, nous comprenons l'importance de fournir un enseignement en informatique qui s'adapte aux besoins individuels de chaque étudiant.
                         Grâce à une large gamme de cours électifs, vous pouvez personnaliser votre parcours académique pour correspondre à vos intérêts et vos objectifs de carrière.</p>
 
-                    <!-- Deuxième image et texte -->
+                    <!-- Deuxieme image et texte -->
                     <div class="image-container ml-3" >
                         <img src="${pageContext.request.contextPath}/img/Liste_Image2.jpg" alt="Image 2" class="img-fluid" style="box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.8);">
                         <h2 class="image-title">Apprentissage Pratique</h2>
                     </div>
-                    <p class="text-container">Quoi de mieux pour apprendre la programmation que de mettre la main à la pâte? Nos cours sont conçus pour offrir une expérience d'apprentissage pratique.
+                    <p class="text-container" style="background-color: #44b4cd">Quoi de mieux pour apprendre la programmation que de mettre la main à la pâte? Nos cours sont conçus pour offrir une expérience d'apprentissage pratique.
                         Vous aurez de nombreuses occasions de travailler sur des projets réels et de collaborer avec vos pairs, tout en étant guidé par nos instructeurs expérimentés.</p>
 
-                    <!-- Troisième image et texte -->
+                    <!-- Troisieme image et texte -->
                     <div class="image-container" style="margin-left: 0;">
                         <img src="${pageContext.request.contextPath}/img/Liste_Image3.jpg" alt="Image 3" class="img-fluid" style="box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.8);">
                         <h2 class="image-title">Soutien Continu</h2>
                     </div>
-                    <p class="text-container">Votre réussite est notre priorité. C'est pourquoi nous offrons divers services de soutien, tels que des séances de tutorat, des ateliers de préparation à la carrière,
+                    <p class="text-container" style="background-color: orange">Votre réussite est notre priorité. C'est pourquoi nous offrons divers services de soutien, tels que des séances de tutorat, des ateliers de préparation à la carrière,
                         et une orientation académique personnalisée. De la salle de classe jusqu'à l'obtention de votre diplôme, nous sommes là pour vous aider à chaque étape.</p>
                 </div>
             </div>

@@ -14,7 +14,7 @@ public class Lab04DataContext {
         listeEtudiants = new ArrayList<>();
         listeInscriptions = new ArrayList<>();
 
-        // Initialisation de la liste des cours avec des données fictives
+        // Initialisation de la liste des cours
         listeCours.add(new Cours(101, "Programmation Java", 3, "Automne", "NumCours.docx"));
         listeCours.add(new Cours(102, "Web Développement", 3, "Printemps", "NumCours.docx"));
         listeCours.add(new Cours(103, "Réseaux Informatiques", 2, "Eté", "NumCours.docx"));
@@ -24,7 +24,7 @@ public class Lab04DataContext {
         listeCours.add(new Cours(107, "Programmation C#", 3, "Automne", "NumCours.docx"));
         listeCours.add(new Cours(108, "Programmation C++", 3, "Printemps", "NumCours.docx"));
 
-        // Initialisation de la liste des étudiants avec des données fictives
+        // Initialisation de la liste des étudiants
         listeEtudiants.add(new Etudiant("123-45-6789", "Dupont", "Jean", "0123456789", "123 Rue A", "A1B2C3", "jean@email.com", "M"));
         listeEtudiants.add(new Etudiant("987-65-4321", "Martin", "Sophie", "9876543210", "321 Rue B", "B2C3D4", "sophie@email.com", "F"));
         listeEtudiants.add(new Etudiant("111-22-3333", "Tremblay", "Pierre", "1112223333", "333 Rue C", "C3D4E5", "pierre@email.com", "M"));
@@ -37,13 +37,17 @@ public class Lab04DataContext {
 
 
 
+    // Retourne la liste des cours
     public List<Cours> getListeCours() {
         return listeCours;
     }
 
+    // Retourne la liste des etudiants
     public List<Etudiant> getListeEtudiants() {
         return listeEtudiants;
     }
+
+    // Trouver et retourner un etudiant par son NAS
     public Etudiant getEtudiant(String nas) {
         for (Etudiant etudiant : listeEtudiants) {
             if (etudiant.getNas().equals(nas)) {
@@ -53,33 +57,37 @@ public class Lab04DataContext {
         return null;
     }
 
-    public List<Inscription> getListeInscriptions() {
+    // Retourne la liste des inscription
+    public List<Inscription> getListeInscriptions() {//Methode pas encore utilisee
         return listeInscriptions;
     }
 
+    // Ajouter une nouvelle inscription a la liste
     public void inscrire(Inscription inscription) {
         listeInscriptions.add(inscription);
     }
 
+    // Trouver et retourner un cours par son numero
     public Cours getCours(int numero) {
-        System.out.println("Méthode getCours appelée avec le numéro : " + numero);
+        // Debugage affiche le numero du cours cherche
+        System.out.println("Methode getCours appelee avec le numero : " + numero);
+
         Cours foundCours = null;
+        // Parcours de la liste de cours
         for (Cours cours : listeCours) {
             if (cours.getNumero() == numero) {
                 foundCours = cours;
                 break;
             }
         }
+
+        // Debogage affiche les informations du cours trouve ou non
         if (foundCours != null) {
-            System.out.println("Cours trouvé : " + foundCours.toString());
+            System.out.println("Cours trouve : " + foundCours.toString());
         } else {
-            System.out.println("Cours avec numéro " + numero + " non trouvé");
+            System.out.println("Cours avec numero " + numero + " non trouve");
         }
+
         return foundCours;
-
     }
-
-
-
-
 }

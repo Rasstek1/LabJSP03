@@ -21,17 +21,28 @@
         <thead class="thead-dark">
         <tr>
             <th>NAS</th>
-            <th>Nom</th>  <!-- Ajouté -->
-            <th>Prénom</th>  <!-- Ajouté -->
+            <th>Nom</th>
+            <th>Prénom</th>
             <th>Date d'inscription</th>
         </tr>
         </thead>
         <tbody>
+        <!-- Première ligne avec NAS, Nom, Prénom, et Date d'inscription -->
         <tr class="bg-info">
             <td>${inscription.nas}</td>
-            <td>${etudiant.nom}</td>  <!-- Ajouté -->
-            <td>${etudiant.prenom}</td>  <!-- Ajouté -->
+            <td>${etudiant.nom}</td>
+            <td>${etudiant.prenom}</td>
             <td>${inscription.dateInscription}</td>
+        </tr>
+        <!-- Deuxième ligne avec des informations supplémentaires -->
+        <tr class="bg-info">
+            <td colspan="4"> <!-- Fusion des 4 cellules -->
+                Téléphone: ${etudiant.telephone},
+                Adresse: ${etudiant.adresse},
+                Code Postal: ${etudiant.codePostal},
+                Courriel: ${etudiant.courriel},
+                Genre: ${etudiant.genre}
+            </td>
         </tr>
         </tbody>
     </table>

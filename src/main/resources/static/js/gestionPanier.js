@@ -1,4 +1,4 @@
-
+// telechargement du fichier
 function downloadFile() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '${pageContext.request.contextPath}/numCours', true);
@@ -15,19 +15,4 @@ function downloadFile() {
     xhr.send();
 
 }
-$(document).ready(function() {
-    function ajouterAuPanier(numero) {
-        $.ajax({
-            url: '/cours/ajouter/' + numero,
-            type: 'POST',
-            success: function(response) {
-                alert("Cours ajouté au panier");
-            },
-            error: function(error) {
-                alert("Erreur lors de l'ajout au panier");
-            }
-        });
-    }
 
-
-});

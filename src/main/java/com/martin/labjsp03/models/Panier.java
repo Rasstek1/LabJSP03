@@ -1,53 +1,64 @@
+
 package com.martin.labjsp03.models;
+
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+
 public class Panier {
 
-    // a) Une propriété privée nommée "liste" de type List<Cours>
+    // Liste de cours dans le panier
     private List<Cours> liste;
 
+    // Constructeur du Panier
     public Panier() {
+        // Initialisation de la liste a un ArrayList vide
         this.liste = new ArrayList<>();
     }
 
-    // b) Une méthode d'accès pour la propriété "liste"
+    // Obtenir la liste des cours dans le panier
     public List<Cours> getListe() {
         return liste;
     }
 
-    // c) La méthode nommée "ajouterCours"
+    // Ajouter un cours au panier
     public void ajouterCours(Cours cours) {
+        // Verifie si le cours est deja dans le panier
         if (!contains(cours)) {
+            // Ajoute le cours à la liste
             liste.add(cours);
         }
     }
+
+    // Verifie si le panier contient deja ce cours
     public boolean contains(Cours cours) {
         return liste.contains(cours);
     }
 
-
-
-    // d) La méthode nommée "supprimerCours"
+    // Supprimer un cours du panier avec son numero
     public void supprimerCours(int numero) {
+        // Utilisation d'un iterateur pour parcourir la liste-> Un iterateur permet de supprimer un element d'une liste pendant qu'on la parcourt
         Iterator<Cours> iterator = liste.iterator();
+        // Parcours de la liste de cours
         while (iterator.hasNext()) {
             Cours cours = iterator.next();
-            if (cours.getNumero() == numero) {  // Ici, on utilise '==' parce que le numéro est de type int
+            // Si le numero du cours correspond au numero du cours a supprimer
+            if (cours.getNumero() == numero) {
+                // Suppression du cours
                 iterator.remove();
                 break;
             }
         }
     }
 
-    // e) La méthode nommée "viderPanier"
+    // Pour Vide le panier
     public void viderPanier() {
         liste.clear();
     }
 
-    //Methode supprimer pour déselectionné un choix de la liste de cours si il est déjà dans le panier
+    // Supprime un cours specifique du panier
     public void supprimerCours(Cours cours) {
         liste.remove(cours);
     }

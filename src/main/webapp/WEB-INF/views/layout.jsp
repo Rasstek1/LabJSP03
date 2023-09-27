@@ -72,7 +72,7 @@
 
 <!-- Corps de la page -->
 <div class="content">
-    <div class="container">
+    <div>
         <jsp:include page="${pageContent}.jsp"/>
     </div>
 </div>

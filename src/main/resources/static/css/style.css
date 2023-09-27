@@ -5,6 +5,7 @@
 }
 
 body {
+
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -39,12 +40,13 @@ header {
     max-width: 80%;
 }
 
-h2 {
+h1, h2, h6 {
     color: white;
- ;
+
 }
 .text-content {
-    width: 80%;
+    padding-top: 20px;
+    width: 75%;
     text-align: justify;
 }
 
@@ -63,6 +65,8 @@ footer {
     height: 60px;
     flex-direction: column;
 }
+
+
 
 
 @media (max-width: 768px) {

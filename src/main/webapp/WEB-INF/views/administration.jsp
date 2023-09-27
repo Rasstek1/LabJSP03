@@ -5,7 +5,9 @@
     <title>Administration</title>
 </head>
 <body>
-<h1>Page d'Administration</h1>
+<div style="text-align: center">
+<h4>Page d'Administration</h4>
 <p>Cette page est en cours de développement.</p>
+</div>
 </body>
 </html>

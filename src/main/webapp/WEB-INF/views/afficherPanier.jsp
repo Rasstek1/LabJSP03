@@ -5,20 +5,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Afficher Panier</title>
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pages.css">
 </head>
 <body>
+<div class="background-img">
+    <div>
 <div class="container mt-5">
 
     <c:if test="${not empty errorMessage}">
         <div class="alert alert-danger">${errorMessage}</div>
     </c:if>
 
-    <div>Nombre de cours sélectionnés: ${panier.liste.size()}</div>
+    <h6>Nombre de cours sélectionnés: ${panier.liste.size()}</h6>
 
     <h1 class="text-center">Cours sélectionnés</h1>
     <div style="overflow-x:auto;">
-        <table class="table table-striped table-hover" style="border: 3px solid darkslategrey">
+        <table class="table table-striped table-hover" style="border: 3px solid darkslategrey; background-color: white;">
             <thead class="thead-dark">
             <tr>
                 <th>No.</th>

@@ -6,8 +6,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Valider Étudiant</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pages.css">
 </head>
 <body>
+
+<div class="background-img">
+    <div>
 
 <div class="container mt-5">
     <c:if test="${not empty errorMessage}">
@@ -15,7 +19,7 @@
     </c:if>
 
     <h1 class="text-center">Valider Étudiant</h1>
-    <table class="table table-striped table-hover w-50" style="border: 3px solid darkslategrey">
+    <table class="table table-striped table-hover w-50" style="border: 3px solid darkslategrey; background-color: white">
         <thead class="thead-dark">
         <tr>
             <th>NAS Étudiant</th>

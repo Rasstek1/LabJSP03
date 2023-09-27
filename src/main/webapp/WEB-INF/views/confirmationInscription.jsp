@@ -5,15 +5,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Confirmation d'Inscription</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pages.css">
 </head>
 <body>
+
+<div class="background-img">
+    <div>
 
 <div class="container mt-5">
 
     <h1 class="text-center">Félicitations !</h1>
 
     <h2>Informations de l'étudiant</h2>
-    <table class="table table-striped table-hover w-50" style="border: 3px solid darkslategrey">
+    <table class="table table-striped table-hover w-50" style="border: 3px solid darkslategrey; background-color: white">
         <thead class="thead-dark">
         <tr>
             <th>NAS</th>
@@ -32,8 +36,8 @@
         </tbody>
     </table>
 
-    <h2>Cours choisis :</h2>
-    <table class="table table-striped table-hover w-50" style="border: 3px solid darkslategrey">
+    <h2 class="mt-5">Cours choisis</h2>
+    <table class="table table-striped table-hover w-50" style="border: 3px solid darkslategrey; background-color: white">
         <thead class="thead-dark">
         <tr>
             <th>No.</th>

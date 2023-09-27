@@ -8,7 +8,26 @@
 
     <!-- Texte de bienvenue -->
     <div class="text-content">
-        <h2>À propos des formations</h2>
+        <div>
+            <h3>Bienvenue au Collège Informatix</h3>
+            <p>
+                Le Collège Informatix est une institution d'enseignement de premier plan, spécialisée dans le domaine de la
+                programmation et des technologies de l'information. Fondé en 1980, nous avons pour mission de former la prochaine
+                génération de leaders en technologie. Nos programmes d'études sont axés sur la pratique et conçus pour fournir aux
+                étudiants les compétences essentielles requises pour exceller dans un environnement de travail compétitif.
+            </p>
+            <p>
+                Situé dans une ville dynamique et riche en opportunités, le Collège Informatix offre un environnement d'apprentissage stimulant,
+                doté des dernières technologies et d'installations de pointe. Notre corps enseignant est composé de professionnels du domaine,
+                passionnés par l'enseignement et experts dans leurs disciplines respectives.
+            </p>
+            <p>
+                Rejoignez-nous aujourd'hui pour une expérience éducative transformative qui vous préparera à relever
+                les défis du monde technologique de demain.
+            </p>
+        </div>
+
+        <h3>À propos des formations</h3>
         <p>
             Notre formation en informatique est conçue pour vous fournir toutes les compétences nécessaires
             pour réussir dans le domaine en constante évolution de la technologie de l'information.

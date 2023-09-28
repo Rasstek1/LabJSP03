@@ -4,23 +4,26 @@ import com.martin.labjsp03.models.Cours;
 import com.martin.labjsp03.models.Lab04DataContext;
 import com.martin.labjsp03.models.Panier;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletResponse;
-
+/**
+ * Contrôleur pour gérer les opérations liées aux cours.
+ */
 @Controller
 @RequestMapping("/cours")
 public class CoursController {
 
-    // a. Une propriété nommée "dataContext" de type "Lab04DataContext"
-    private final Lab04DataContext dataContext = new Lab04DataContext();
 
-    // b. La méthode privée "getPanier"
+    private final Lab04DataContext dataContext = new Lab04DataContext();  // Instance du contexte de données pour accéder aux informations sur les étudiants, cours, etc.
+
+    /**
+     * Récupère ou crée un nouveau Panier stocké dans la session HTTP.
+     *
+     * @param session La session HTTP en cours.
+     * @return Le Panier associé à la session.
+     */
     private Panier getPanier(HttpSession session) {
         Panier panier = (Panier) session.getAttribute("panier");
         if (panier == null) {
@@ -30,38 +33,67 @@ public class CoursController {
         return panier;
     }
 
-    // c. La méthode "liste"
+    /**
+     * Affiche la liste des cours disponibles.
+     *
+     * @param session La session HTTP en cours.
+     * @return Un ModelAndView contenant les attributs à afficher.
+     */
+    // Methode liste
     @RequestMapping("/liste")
-    public String liste(Model model, HttpSession session) {
+    public ModelAndView liste(HttpSession session) {
+        ModelAndView mav = new ModelAndView("layout");
+
         Panier panier = getPanier(session);
-        model.addAttribute("panier", panier);
-        model.addAttribute("listeCours", dataContext.getListeCours());
-        model.addAttribute("pageContent", "listeCours"); // attribut pour le layout
-        return "layout"; // Retourne le layout comme vue principale
+        mav.addObject("panier", panier);
+        mav.addObject("listeCours", dataContext.getListeCours());
+        mav.addObject("pageContent", "listeCours");
+
+        return mav;
     }
 
-
-    // d. La méthode "ajouter"
+    /**
+     * Ajoute un cours au Panier.
+     *
+     * @param numero  Le numéro du cours à ajouter.
+     * @param session La session HTTP en cours.
+     * @return Un ModelAndView pour rediriger vers la liste des cours.
+     */
+    // Methode ajouter
     @RequestMapping(value = "/ajouter/{numero}", method = RequestMethod.POST)
-    public String ajouter(@PathVariable("numero") int numero, HttpSession session) {
+    public ModelAndView ajouter(@PathVariable("numero") int numero, HttpSession session) {
         Panier panier = getPanier(session);
         Cours cours = dataContext.getCours(numero);
+        ModelAndView mav = new ModelAndView();
+
         if (cours != null) {
             panier.ajouterCours(cours);
         }
-        return "redirect:/cours/liste";   // Assurez-vous que ce chemin redirige vers la page actuelle
+
+        mav.setViewName("redirect:/cours/liste");
+        return mav;
     }
 
+    /**
+     * Supprime un cours du Panier.
+     *
+     * @param numero  Le numéro du cours à supprimer.
+     * @param session La session HTTP en cours.
+     * @return Un ModelAndView pour rediriger vers la liste des cours.
+     */
+    // Methode supprimer
     @RequestMapping(value = "/supprimer/{numero}", method = RequestMethod.POST)
-    public String supprimer(@PathVariable("numero") int numero, HttpSession session) {
-
+    public ModelAndView supprimer(@PathVariable("numero") int numero, HttpSession session) {
         Panier panier = getPanier(session);
         Cours cours = dataContext.getCours(numero);
+        ModelAndView mav = new ModelAndView();
+
         if (cours != null) {
             panier.supprimerCours(cours);
         }
-        return "redirect:/cours/liste";  // Remplacez par le chemin correct
+
+        mav.setViewName("redirect:/cours/liste");
+        return mav;
     }
-
-
 }
+

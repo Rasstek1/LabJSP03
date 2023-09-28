@@ -3,29 +3,31 @@ package com.martin.labjsp03.controllers;
 import com.martin.labjsp03.models.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.servlet.ModelAndView;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-//need to replace all imports starting with javax.servlet with javax replaced by jakarta
-//Ne pas mettre de import javax.servlet.http.HttpSession; car il y a un conflit avec jakarta.servlet.http.HttpSession
-//Choisir Jakarta
-//https://stackoverflow.com/questions/75573948/fix-no-primary-or-single-unique-constructor-found-for-interface-javax-servlet-h
+/**
+ * Contrôleur pour gérer les opérations liées aux inscriptions.
+ */
 @Controller
 @RequestMapping("/inscription")
+
 public class InscriptionController {
 
-    private final Lab04DataContext dataContext = new Lab04DataContext();
+    private final Lab04DataContext dataContext = new Lab04DataContext();//Initialisation de la variable membre dataContext
 
-    // a. La méthode "getPanier"
+    /**
+     * Récupère l'objet Panier à partir de la session.
+     * Crée un nouveau Panier si aucun n'est trouvé.
+     *
+     * @param session La session HTTP actuelle.
+     * @return Le Panier à utiliser.
+     */
     public Panier getPanier(HttpSession session) {
         Panier panier = (Panier) session.getAttribute("panier");
         if (panier == null) {
@@ -34,29 +36,53 @@ public class InscriptionController {
         }
         return panier;
     }
-    // b. La méthode "listeCours"
-    @RequestMapping(value = "/ajouter/{numero}", method = RequestMethod.POST)
-    public String ajouter(@PathVariable("numero") int numero, HttpSession session) {
 
+    /**
+     * Ajoute un cours au panier.
+     *
+     * @param numero  Le numéro du cours à ajouter.
+     * @param session La session HTTP actuelle.
+     * @return Le ModelAndView à afficher.
+     */
+    @RequestMapping(value = "/ajouter/{numero}", method = RequestMethod.POST)
+    public ModelAndView ajouter(@PathVariable("numero") int numero, HttpSession session) {
         Panier panier = getPanier(session);
         Cours cours = dataContext.getCours(numero);
-        if (cours != null) {
+        ModelAndView mav = new ModelAndView();
 
+        if (cours != null) {
             panier.ajouterCours(cours);
         }
-        return "redirect: listeCours";  // Remplacez par le chemin correct
+
+        mav.setViewName("redirect:listeCours");
+        return mav;
     }
 
-    // b. La méthode "afficher"
+
+    /**
+     * Affiche le contenu du panier.
+     *
+     * @param session La session HTTP actuelle.
+     * @return Le ModelAndView à afficher.
+     */
+    //Methode afficher
     @RequestMapping("/afficher")
-    public String afficher(Model model, HttpSession session) {
+    public ModelAndView afficher(HttpSession session) {
+        ModelAndView mav = new ModelAndView("layout");
         Panier panier = getPanier(session);
-        model.addAttribute("panier", panier);
-        model.addAttribute("pageContent", "afficherPanier"); // attribut pour le layout
-        return "layout"; // Retourne le layout comme vue principale
+        mav.addObject("panier", panier);
+        mav.addObject("pageContent", "afficherPanier");
+        return mav;
     }
 
-    // c. La méthode "supprimer"
+    /**
+     * Supprime un cours du panier.
+     *
+     * @param numero  Le numéro du cours à supprimer.
+     * @param session La session HTTP actuelle.
+     * @return Le ModelAndView à afficher.
+     */
+    //Methode supprimer
     @RequestMapping("/supprimer/{numero}")
     public String supprimer(@PathVariable("numero") int numero, HttpSession session) {
         Panier panier = getPanier(session);
@@ -64,48 +90,133 @@ public class InscriptionController {
         return "redirect:/inscription/afficher";
     }
 
-    // d. La méthode "valider"
+    /**
+     * Valide l'etudiant.
+     *
+     * @param session La session HTTP actuelle.
+     * @return Le ModelAndView à afficher.
+     */
+    //Methode valider
     @RequestMapping("/valider")
-    public String valider(HttpSession session, Model model) {
-        Panier panier = getPanier(session); // Obtenez le panier de la session
+    public ModelAndView valider(HttpSession session) {
+        ModelAndView mav = new ModelAndView("layout");
+        Panier panier = getPanier(session);
+
         if (panier.getListe().isEmpty()) {
-            model.addAttribute("errorMessage", "Vous devez choisir au moins un cours avant de valider.");
-            model.addAttribute("pageContent", "validerEtudiant"); // attribut pour le layout
-            return "layout"; // Retourne au même layout comme vue principale
+            mav.addObject("errorMessage", "Vous devez choisir au moins un cours avant de valider.");
+            mav.addObject("pageContent", "validerEtudiant"); // attribut pour le layout
+            return mav; // Retourne le même ModelAndView
         }
 
         List<Etudiant> listeEtudiants = dataContext.getListeEtudiants();
-        model.addAttribute("listeEtudiants", listeEtudiants); // Corrigé ici
-        model.addAttribute("pageContent", "validerEtudiant"); // attribut pour le layout
-        return "layout"; // Retourne le layout comme vue principale
+        mav.addObject("listeEtudiants", listeEtudiants);
+        mav.addObject("pageContent", "validerEtudiant");
+        return mav;
     }
 
 
-
-    // e. La méthode "confirmer"
-    @RequestMapping("/confirmer/{nas}")//
-    public String confirmer(@PathVariable("nas") String nas, HttpSession session, Model model) {
+    /**
+     * Affiche le formulaire d'inscription.
+     *
+     * @param session La session HTTP actuelle.
+     * @return Le ModelAndView à afficher.
+     */
+    //Methode confirmer
+    @RequestMapping("/confirmer/{nas}")
+    public ModelAndView confirmer(@PathVariable("nas") String nas, HttpSession session) {
+        ModelAndView mav = new ModelAndView("layout");
         Panier panier = getPanier(session);
         Etudiant etudiant = dataContext.getEtudiant(nas);
-        if (etudiant != null && panier != null) {
-            // Récupérer la liste des cours du panier ou de toute autre source
-            List<Cours> listCoursSession = panier.getListe(); // Cette méthode dépend de la structure de votre classe Panier
 
-            // Créer une nouvelle inscription
-            Inscription inscription = new Inscription(nas, new Date(), listCoursSession);
+        if (etudiant != null && panier != null) {
+            // Recuperer la liste des cours du panier
+            List<Cours> listCoursSession = panier.getListe();
+
+            // Marquer l'etudiant comme inscrit
+            etudiant.setEstInscrit(true);
+
+            // Creer une nouvelle inscription
+            Inscription inscription = new Inscription(nas, new Date(), listCoursSession, etudiant);
+
+            // Logging pour debogage
+            System.out.println("NAS de l'étudiant : " + etudiant.getNas());
+            System.out.println("Est inscrit ? " + etudiant.isEstInscrit());
 
             // Ajouter l'inscription dans le contexte de données
             dataContext.inscrire(inscription);
 
-            // Ajouter l'inscription au modèle pour la vue
-            model.addAttribute("inscription", inscription);
-            model.addAttribute("etudiant", etudiant);
 
+            // Ajouter l'inscription au modele pour la vue
+            mav.addObject("inscription", inscription);
+            mav.addObject("etudiant", etudiant);
 
-            model.addAttribute("pageContent", "confirmationInscription"); // Corrigé ici
-            return "layout"; // Retourne le layout comme vue principale
+            // Ajouter l'inscription à la liste des inscriptions dans la session
+            List<Inscription> listeInscriptions = (List<Inscription>) session.getAttribute("listeInscriptions");
+            if (listeInscriptions == null) {
+                listeInscriptions = new ArrayList<>();
+                session.setAttribute("listeInscriptions", listeInscriptions);
+            }
+            listeInscriptions.add(inscription);
+
+            panier = new Panier();
+            session.setAttribute("panier", panier);//Vider le panier pour ne pas refiler les cours de la derniere inscription a tout les inscrits
+
+            // Definir le contenu de la page
+            mav.addObject("pageContent", "confirmationInscription");
+
+            return mav;
         }
-        return "Erreur"; // Nom d'une vue JSP pour afficher les erreurs
+
+        mav.setViewName("Erreur"); // Nom d'une vue JSP pour afficher les erreurs(Pas encore cree)
+        return mav;
+    }
+
+    /**
+     * Affiche la liste des inscriptions.
+     *
+     * @param session La session HTTP actuelle.
+     * @return Le ModelAndView à afficher.
+     */
+    //Methode afficherInscriptions
+    @RequestMapping("/afficherInscriptions")
+    public ModelAndView afficherInscriptions(HttpSession session) {
+        ModelAndView mav = new ModelAndView("layout");
+
+        List<Inscription> listeInscriptions = (List<Inscription>) session.getAttribute("listeInscriptions");
+
+        if (listeInscriptions == null) {
+            mav.addObject("errorMessage", "Aucune inscription n'a été effectuée.");
+        } else {
+            mav.addObject("listeInscriptions", listeInscriptions);
+        }
+
+        mav.addObject("pageContent", "afficherInscriptions");
+
+        return mav;
+    }
+
+    /**
+     * Affiche la liste des inscriptions.
+     *
+     * @param session La session HTTP actuelle.
+     * @return Le ModelAndView à afficher.
+     */
+    //Methode inscription
+    @RequestMapping("/inscription")
+    public ModelAndView inscription(HttpSession session) {
+        ModelAndView mav = new ModelAndView("layout");
+
+        List<Inscription> listeInscriptions = (List<Inscription>) session.getAttribute("listeInscriptions");
+
+        if (listeInscriptions == null) {
+            listeInscriptions = new ArrayList<>();
+            session.setAttribute("listeInscriptions", listeInscriptions);
+        }
+
+        mav.addObject("listeInscriptions", listeInscriptions);
+        mav.addObject("pageContent", "inscription");
+
+        return mav;
     }
 
 

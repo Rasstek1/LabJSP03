@@ -25,14 +25,14 @@ public class Lab04DataContext {
         listeCours.add(new Cours(108, "Programmation C++", 3, "Printemps", "NumCours.docx"));
 
         // Initialisation de la liste des étudiants
-        listeEtudiants.add(new Etudiant("123-45-6789", "Dupont", "Jean", "0123456789", "123 Rue A", "A1B2C3", "jean@email.com", "M"));
-        listeEtudiants.add(new Etudiant("987-65-4321", "Martin", "Sophie", "9876543210", "321 Rue B", "B2C3D4", "sophie@email.com", "F"));
-        listeEtudiants.add(new Etudiant("111-22-3333", "Tremblay", "Pierre", "1112223333", "333 Rue C", "C3D4E5", "pierre@email.com", "M"));
-        listeEtudiants.add(new Etudiant("444-55-6666", "Leroy", "Julie", "4445556666", "456 Rue D", "D4E5F6", "julie@email.com", "F"));
-        listeEtudiants.add(new Etudiant("777-88-9999", "Smith", "John", "7778889999", "789 Rue E", "E5F6G7", "john@email.com", "M"));
-        listeEtudiants.add(new Etudiant("222-33-4444", "Brown", "Alice", "2223334444", "246 Rue F", "F6G7H8", "alice@email.com", "F"));
-        listeEtudiants.add(new Etudiant("555-66-7777", "Wang", "Li", "5556667777", "369 Rue G", "G7H8I9", "li@email.com", "M"));
-        listeEtudiants.add(new Etudiant("888-99-0000", "Garcia", "Maria", "888990000", "481 Rue H", "H8I9J0", "maria@email.com", "F"));
+        listeEtudiants.add(new Etudiant("123-45-6789", "Dupont", "Jean", "0123456789", "123 Rue A", "A1B2C3", "jean@email.com", "M", false));
+        listeEtudiants.add(new Etudiant("987-65-4321", "Martin", "Sophie", "9876543210", "321 Rue B", "B2C3D4", "sophie@email.com", "F", false));
+        listeEtudiants.add(new Etudiant("111-22-3333", "Tremblay", "Pierre", "1112223333", "333 Rue C", "C3D4E5", "pierre@email.com", "M", false));
+        listeEtudiants.add(new Etudiant("444-55-6666", "Leroy", "Julie", "4445556666", "456 Rue D", "D4E5F6", "julie@email.com", "F", false));
+        listeEtudiants.add(new Etudiant("777-88-9999", "Smith", "John", "7778889999", "789 Rue E", "E5F6G7", "john@email.com", "M", false));
+        listeEtudiants.add(new Etudiant("222-33-4444", "Brown", "Alice", "2223334444", "246 Rue F", "F6G7H8", "alice@email.com", "F", false));
+        listeEtudiants.add(new Etudiant("555-66-7777", "Wang", "Li", "5556667777", "369 Rue G", "G7H8I9", "li@email.com", "M", false));
+        listeEtudiants.add(new Etudiant("888-99-0000", "Garcia", "Maria", "888990000", "481 Rue H", "H8I9J0", "maria@email.com", "F", false));
     }
 
 

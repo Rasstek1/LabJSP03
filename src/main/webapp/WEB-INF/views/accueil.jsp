@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <div class="container">
-    <!-- Bannière -->
+    <!-- Banniere -->
     <div class="banner">
         <img class="img-banner" src="${pageContext.request.contextPath}/img/banner.jpg" alt="Bannière" />
     </div>

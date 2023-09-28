@@ -35,18 +35,26 @@
                 <td>${etudiant.nom}</td>
                 <td>${etudiant.prenom}</td>
                 <td>
-                    <a href="<c:url value='/inscription/confirmer/${etudiant.nas}'/>" class="btn btn-success">
-                        <i class="fa fa-check"></i>
-                    </a>
+                    <c:choose>
+                        <c:when test="${not etudiant.estInscrit}">
+                            <a href="<c:url value='/inscription/confirmer/${etudiant.nas}'/>" class="btn btn-success">
+                                <i class="fa fa-check"></i>
+                            </a>
+                        </c:when>
+                        <c:otherwise>
+                            <button class="btn btn-secondary" disabled>
+                                <i class="fa fa-check"></i>
+                            </button>
+                        </c:otherwise>
+                    </c:choose>
                 </td>
-
             </tr>
         </c:forEach>
         </tbody>
     </table>
 
     <div class="d-flex">
-        <!-- Ajouter les autres boutons ou liens de navigation ici -->
+
         <a href="${pageContext.request.contextPath}/cours/liste" class="btn btn-secondary">Retour à la liste</a>
     </div>
 

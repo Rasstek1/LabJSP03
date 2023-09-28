@@ -11,15 +11,16 @@ public class Inscription {
 
     private List<Cours> listeCours;
 
-
+    private Etudiant etudiant;//Rajoute dans cette classe pour utiliser la methode inscription du controlleur Inscrption et la vue inscription.jsp
 
     public Inscription() {
     }
 
-    public Inscription(String nas, Date dateInscription, List<Cours> listeCours) {
+    public Inscription(String nas, Date dateInscription, List<Cours> listeCours, Etudiant etudiant) {
         this.nas = nas;
         this.dateInscription = dateInscription;
         this.listeCours = listeCours;
+        this.etudiant = etudiant;
     }
 
 
@@ -44,6 +45,12 @@ public class Inscription {
         return listeCours;
     }
 
+    public Etudiant getEtudiant() {
+        return etudiant;
+    }
 
+    public void setEtudiant(Etudiant etudiant) {
+        this.etudiant = etudiant;
+    }
 
 }

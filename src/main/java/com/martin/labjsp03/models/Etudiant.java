@@ -16,11 +16,12 @@ public class Etudiant {
 
     private String genre;
 
+    private boolean estInscrit = false;
 
     public Etudiant() {
     }
 
-    public Etudiant(String nas, String nom, String prenom, String telephone, String adresse, String codePostal, String courriel, String genre) {
+    public Etudiant(String nas, String nom, String prenom, String telephone, String adresse, String codePostal, String courriel, String genre, boolean estInscrit) {
         this.nas = nas;
         this.nom = nom;
         this.prenom = prenom;
@@ -29,6 +30,8 @@ public class Etudiant {
         this.codePostal = codePostal;
         this.courriel = courriel;
         this.genre = genre;
+        this.estInscrit = estInscrit;
+
     }
 
 
@@ -96,5 +99,12 @@ public class Etudiant {
         this.genre = genre;
     }
 
+    // Verification si l'etudiant est inscrit
+    public boolean isEstInscrit() {
+        return estInscrit;
+    }
 
+    public void setEstInscrit(boolean estInscrit) {
+        this.estInscrit = estInscrit;
+    }
 }
